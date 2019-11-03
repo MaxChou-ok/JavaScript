@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="baidu.css" />
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="baidu">
+			<ul id="list">
+				<li>
+					<div></div>
+					<span>泡沫</span>
+					<span>邓紫棋</span>
+				</li>
+				<li>
+					<div></div>
+					<span>说爱你</span>
+					<span>蔡依林</span>
+				</li>
+				<li>
+					<div></div>
+					<span>稻香</span>
+					<span>周杰伦</span>
+				</li>
+				<li>
+					<div></div>
+					<span>我的梦</span>
+					<span>张靓颖</span>
+				</li>
+				<li>
+					<div></div>
+					<span>怎么说我不爱你</span>
+					<span>萧敬腾</span>
+				</li>
+				<li>
+					<div>️</div>
+					<span>无处安放</span>
+					<span>白若溪</span>
+				</li>
+			</ul>
+			<div class="select">
+				<span class="selectAll"></span>
+				<span>全选</span>
+				<div class="others">
+					<span><em></em>收藏</span>
+					<span><em></em>添加</span>
+					<span><em></em>删除</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const ul = document.querySelector('#list')
+		const lis = ul.querySelectorAll('li');
+
+		lis.forEach((ele, i) => {
+			if (i % 2) {
+				ele.className = 'odd';
+				ele.color = 'odd';
+			} else {
+				ele.className = 'even';
+				ele.color = 'even'
+			}
+			ele.onmousemove = function () {
+				color = this.ele;
+				ele.className = 'pink';
+			}
+			ele.onmouseout = function () {
+				ele.className = this.color;
+			}
+		})
+
+		const divs = ul.querySelectorAll('div');
+		divs.forEach((ele, i) => {
+			let onoff = false
+			ele.onclick = function () {
+				if (!onoff) {
+					ele.innerText = '√';
+					ele.parentNode.onmouseout = function () {
+						this.className = 'pink';
+					}
+				}
+				else {
+					ele.innerText = ''
+					ele.parentNode.onmouseout = function () {
+						this.className = this.color;
+					}
+				}
+				onoff = !onoff
+
+				if (divs[0].innerText === '√' && divs[1].innerText === '√' && divs[2].innerText === '√' && divs[3].innerText === '√' && divs[4].innerText === '√' && divs[5].innerText === '√') {
+					ul.nextElementSibling.firstElementChild.innerText = '√';
+				} else {
+					ul.nextElementSibling.firstElementChild.innerText = '';
+				}
+			}
+		})
+		let onoff = false
+		ul.nextElementSibling.firstElementChild.onclick = function () {
+			if (!onoff) {
+				this.innerText = '√'
+				divs.forEach(function(ele,i){
+					ele.innerText = '√';
+					ele.parentNode.className = 'pink';
+				})
+			}
+			else {
+				this.innerText = '';
+				divs.forEach(function(ele,i){
+					ele.innerText = '';
+					console.log(this.color);
+					ele.parentNode.className = ele.parentNode.color;
+				})
+			}
+			onoff = !onoff
+		}
+	</script>
+</body>
+</html>
