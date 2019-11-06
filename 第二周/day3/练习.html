@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+        </ul>
+<script>
+//       call使用方法具例
+var lis = document.getElementsByTagName('li');
+var arr =  Array.from(lis);
+arr.forEach((ele,i)=>{
+        ele.onclick = function(){
+            alert(i);
+        }
+    });
+
+    // var a = 1;
+    // a.a = 2;
+    // console.log(a.a);
+    // const x = {
+    //     a:1,
+    //     c:{a:3,
+    //        c:{a:5,
+    //           d:function(){
+    //             console.log(this.a)
+    //             }
+    //         }
+    //     }
+    // }
+    // const y = x.c.c.d;
+    // x.c.c.d();   //5 
+    // y();  //1
+
+// 对象的解构赋值
+    // let obj = {
+    //  p: [
+    //         'Hello',
+    //         {
+    //             y: 'World',
+    //             z:{
+    //                 x:[
+    //                     {
+    //                         j:0
+    //                     }
+    //                 ]
+    //             }
+    //         }
+    //     ]
+    // };
+    // let {p:[x,{y,z:{x:[{j}]}}]} = obj
+    // console.log(j);  // 0
+
+
+    // function move({x, y} = { x: 0, y: 0 }) {
+    //     return [x, y];
+    // }
+    // const {log} = console;
+    // log(move({x: 3, y: 8}));  //3,8
+    // log( move( {x: 3} )); //3,undefined
+    // log( move({}));//undefined,undefined
+    // log(move());//0,0
+</script>
+</body>
+</html>

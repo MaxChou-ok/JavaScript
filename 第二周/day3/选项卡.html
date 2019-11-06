@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .active{
+            background: yellow;
+        }
+        #box div{
+            width:200px;
+            height:100px;
+            border:1px solid #000;
+            display: none;
+        }
+        #box div.show{
+            display: block;
+        }
+        </style>
+<body>
+    <div id="box">
+        <button class="active" index='0'">👨‍💻</button>
+        <button index="1">👨‍💻</button>
+        <button index ="2">👨‍💻</button>
+        <div class="show"> 🙂</div>
+        <div> 😡 </div>
+        <div> 🤨 </div>
+    </div>
+<script>
+function Tab(id){
+    this.box = document.getElementById(id);
+    this.divs = document.querySelectorAll('div');
+    this.btns = document.querySelectorAll('button');
+    this.prevIndex = 0;
+}
+Tab.prototype.events = function(){
+    const tired = this;
+    this.btns.forEach(function(ele,index){
+      ele.onclick = function(){
+          tired.change(this,index)
+      }
+  });
+}
+Tab.prototype.change = function(that,index){
+        this.btns[this.prevIndex].className = '';
+        this.divs[this.prevIndex].className = '';
+        that.className = 'active';
+        this.divs[index].className = 'show';
+        this.prevIndex = index;
+    }
+    let t = new Tab('box');
+    t.events();
+    console.log(t);
+
+
+console.log()
+</script>
+</body>
+</html>
