@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 重写call
+// Function.prototype.mycall = function(that,...arg){
+//         // this//fn
+//         let type = typeof that;
+//         if(that === null || that === undefined){
+//             that = window;
+//         }else{
+//             switch(type){
+//                 case 'string':
+//                     that = new String(that);
+//                 break;
+//                 case 'boolean':
+//                     that = new Boolean(that);
+//                 break;
+//                 case 'number':
+//                     that = new Number(that);
+//                 break;
+//             }
+//         }}
+
+
+// 数据库类型检测库
+// class Tools {
+//         static type(data){
+//             if(typeof data !== 'object'){
+//                 return typeof data;
+//             }
+//             let obj = {
+//                 object:'Object',
+//                 array:'Array',
+//                 null:'Null'
+//             }
+//             let toS = Object.prototype.toString;
+//             for(let attr in obj){
+//                 if(toS.call(data) === `[object ${obj[attr]}]`){
+//                     return attr;
+//                 }
+//             }
+//         }
+//     }
+  
+//     console.log( Tools.type([]) );
+
+
+
+</script>
+</body>
+</html>

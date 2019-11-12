@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="price.css" />
+</head>
+
+<body onselectstart="return false;">
+	<div class="wrap">
+		<div class="box">
+			<ul class="list">
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>12.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>10.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>8.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>8元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>14.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+			</ul>
+			<div class="info">
+				<span>商品公合计：<em>0</em>件</span>
+				<span>共花费了：<em>0</em>元</span>
+				<br />
+				<br />
+				<span>其中最贵的商品单价是：<em>0</em>元</span>
+			</div>
+		</div>
+	</div>
+	<script>
+		let lis = document.querySelectorAll('.list li')
+		let info = document.querySelectorAll('.info')
+		let em = document.querySelectorAll('.list li em')
+		let strong = document.querySelectorAll('.list li span strong')
+		let max_price = [];
+		let emem = document.querySelectorAll('.list li em')
+		let add = document.querySelectorAll('.list li i:nth-of-type(2)') 
+		for (let i = 0; i < lis.length; i++) { 
+         let lis_child = lis[i].children;
+         let em_num = lis_child[1].innerText;
+         let price = lis_child[3].children[0];
+         let price_value = price.innerText;
+         let sum = lis_child[3].children[1];
+         let sum_value = sum.innerText;
+         let info_child = info[0].children;
+         let info_total = info_child[1].children;
+         let goods = info[0].children[0].children[0];
+		}
+
+	</script>
+</body>
+
+</html>
