@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//验证的是是否为一个合法的url
+// let str2 = 'ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=js%20全角转半角%20正则&oq=%25E5%2585%25A8%25E8%25A7%2592%25E8%25BD%25AC%25E5%258D%258A%25E8%25A7%2592%2520%25E6%25AD%25A3%25E5%2588%2599&rsv_pq=ed9277970000f747&rsv_t=719cvLoB2Cy7pOW4%2F1hf3xOXnlRxJsSEPLA5xAfCoQ5RkeA6ruGTQ0OPjo4';
+// let re = /^(http)s?:\/\/w{3}\.[a-z]{2,18}(\.[a-z]{2,3}){1,2}\/[a-z]{1,10}\?(([a-z]\w{0,10})=([\w=%-]+)&?)+$/;
+// let re2 = /([a-z]\w{0,10})=([\w=%-]+)/g;
+//         let obj = {};
+//         str2.replace(re2,(...arg)=>{
+//             let a = arg[1];
+//             let b = arg[2];
+//             obj[a] = b;
+//         });
+//         console.log(obj);
+// 步骤：
+// (http)s  -> http|https
+// :\/\/  ->  ://
+// /w{3}\. -> www.
+// [a-z]{2,18} -> baidu
+// (\.[a-z]{2,3}){1,2} -> .com|.cn|.com.cn|.net ...
+// \/[a-z]{1,10}\?  -> /haha?    接口地址
+// (([a-z]\w{0,10})=([\w=%-]+)&?)+   key=value&|key=value
+
+// 身份证号验证
+// console.log(/^[1-8]\d{5}(19[2-9]\d|20[0-1]\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/.test(str2));
+
+// 千分符
+// str.replace(/(\d)(?=(\d{3})+$)/g,'$1,','$1,');  
+
+// 盒子模型
+// 不带单位：
+// clientWidth/clientHeight   盒子可视的宽度(支持padding)
+// clientLeft/clientTop   左边框和上边框
+// offsetWidth/offsetHeight   盒子可视的宽度(支持padding +border)
+// offsetParent  定位父级(元素)
+// offsetLeft/offsetTop  定位父级到当前元素的距离（当前元的左外边框到定位父级的左内边框的距离）
+// scrollHeight被内容撑开的高度,不算边框的
+// scrollTop/scrollLeft 滚动条的距离
+
+// 获取样式表中的样式： getComputedStyle(element).attr  （带单位）
+// getComputedStyle:计算后的样式
+
+</script>
+</body>
+</html>
