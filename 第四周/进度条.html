@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
+    width: 700;
+    height: 10px;
+    border: 2px solid orange;
+    margin: 20%;
+}
+#box2{
+    height: 10px;
+    width: 0;
+    background: greenyellow;
+    transition: 1s;
+}
+</style>
+</head>
+<body id="body">
+    <div id="box">
+        <div id="box2"></div>
+    </div>
+<script>
+    let ary =[
+   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574091928628&di=f59d572336048a3d557d6e9a6630bd7b&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D2d460ac48c13632715b8ca37a4bf8cda%2F34fae6cd7b899e51332aac0c44a7d933c8950d05.jpg',
+   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574091928628&di=a4b803689d1e2fd9c9c7d9ce6557b94f&imgtype=0&src=http%3A%2F%2Fimg3.a0bi.com%2Fupload%2Fttq%2F20140717%2F1405596596652_middle.jpg',
+   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574091928627&di=8e932d5b2e12cac59827cd5482112676&imgtype=0&src=http%3A%2F%2Fimg.qqleju.com%2Fuploads%2Fallimg%2F130811%2F11-024155_629.jpg',
+   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574091928627&di=8e932d5b2e12cac59827cd5482112676&imgtype=0&src=http%3A%2F%2Fimg.qqleju.com%2Fuploads%2Fallimg%2F130811%2F11-024155_629.jpg'
+    ];
+    let num = 0;
+    ary.forEach(img=>{
+        let pic = document.createElement('img');
+        pic.src = img;
+        pic.onload = function(){
+            box2.style.width = 25*(++num)+'%';
+            if(25*num === 100){
+                body.style.background = 'url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574091928627&di=8e932d5b2e12cac59827cd5482112676&imgtype=0&src=http%3A%2F%2Fimg.qqleju.com%2Fuploads%2Fallimg%2F130811%2F11-024155_629.jpg)'  ;body.style.transition = '3s';
+            }
+        }
+        pic.onerror = function(){
+            pic.onload();
+        }  
+    })
+</script>
+</body>
+</html>
