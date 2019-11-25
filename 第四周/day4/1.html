@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// let res = Number(':200px');
+// if(res===200){
+//    alert(200);
+// }else if(res===NaN){
+//    alert(NaN);
+// }else if(typeof res==='number'){
+//    alert('number');
+// }else{
+//    alert('Invalid Number');
+// }
+
+// console.log(a); 
+// var a=12;
+// function a(){
+//     console.log(a);
+//     a=13;
+// }
+// a();
+// console.log(a);
+
+// let a={}, b='0', c=0;  
+// a[b]='珠峰';
+// a[c]='培训';  
+// console.log(a[b]);
+
+// let a={}, b=Symbol('1'), c=Symbol('1');  
+// a[b]='珠峰';
+// a[c]='培训';  
+// console.log(a[b]);
+
+// let a={}, b={n:'1'}, c={m:'2'};  
+// a[b]='珠峰';
+// a[c]='培训';  
+// console.log(a[b]);
+
+// function Fn() {
+//     this.x = 10;
+//     this.y = 20;
+//     this.getX = function () {
+//         console.log(this.x);
+//     }
+// }
+// Fn.prototype.y=40;
+// Fn.prototype={
+//     x:30,
+//     getY:function(){
+//         this.y+=1;
+//         console.log(this.y);
+//     },
+//     sum:function(){
+//         console.log(this.x+this.y);
+//     }
+// };
+// let f1 = new Fn;
+// let f2 = new Fn;
+// console.log(f1.getX === f2.getX);
+// console.log(f1.getY === f2.getY);
+// console.log(f1.constructor);
+// f1.getX();
+// f2.getY();
+// f1.sum();
+
+// var F = function () {};
+//     Object.prototype.a = function () {
+//         console.log('a()')
+//     };
+//     Function.prototype.b = function () {
+//         console.log('b()')
+//     };
+//     var f = new F();
+//     f.a();
+//     f.b();
+//     F.a();
+//     F.b();
+
+// function A(){
+//     alert(1);
+// }
+// function Func() {
+//     A=function(){
+//        alert(2);
+//     };
+//     return this;
+// }
+// Func.A=A;
+// Func.prototype={
+//     A:()=>{
+//        alert(3);
+//     }
+// };
+// A();
+// Fn.A();
+// Fn().A();
+// new Fn.A();
+// new Fn().A();
+// new new Fn().A();
+
+function A1(name) {
+    this.name = name;
+}
+function A2(name) {
+    this.name = name || 'Jerry';
+}
+function A3(name) {
+    name && this.name = name;
+}
+A1.prototype.name = 'Tom';
+A2.prototype.name = 'Tom';
+A3.prototype.name = 'Tom';
+alert((new A1().name) + (new A2().name) + (new A3().name));
+
+
+</script>
+</body>
+</html>
