@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1"></h1>
+    <div id="box"> 
+   USER:<input type="text" id="user">
+   PW:<input type="password" id="pw">
+   <button id="btn">登录</button>
+    </div>
+<script>
+let sql = [
+    {
+      user:'123',
+      pw:123
+    },
+    {
+      user:'321',
+      pw:321
+    }
+];
+setCookie('name','xxoo',{
+    setTime:{
+        data:10
+    }
+});
+function setCookie(key,val,time){
+    if(time){
+        let o = new Date;
+        let t;
+        let prop;
+        for(let attr in time.setTime){
+            t = attr[0].toUpperCase()+attr.substr(1);
+            prop = attr;
+        }
+        o['set'+t](new Date()['get'+t]()+time.setTime[prop]);
+        document.cookie = key + '=' +val + '; expires =' + o;
+    }else{
+        document.cookie = key + '='+val;
+    }
+}
+
+function getCookie(key){
+    let c = document.cookie;
+    let val;
+    c.split('; ').forEach(item=>{
+        let ary = item.split('=');
+        if(ary[0] === key){
+            val = ary[1];
+        }
+    });
+    return val;
+}
+function removeCookie(key,val){
+    setCookie(key,val,{
+        setTime:{date:-1}});
+}
+
+removeCookie('user','123');
+
+let c = document.cookie;
+c.split('; ').forEach(item=>{
+    let ary = item.split('=');
+    if(ary[0] === 'user'){
+        h1.innerHTML = '欢迎'+ary[1]+'回来';
+        box.style.display = 'none';
+    }
+});
+btn.onclick = function(){
+    let val1 = user.value;
+    let val2 = pw.value;
+
+    let o = sql.find(item=>item.user === val1);
+    if(o){
+        if(o.pw === val2*1){
+            alert('登录成功');
+            document.cookie = 'user='+o.user;
+        window.location.reload();
+        }else{
+            alert('用户名或密码错误');
+        }
+    }else{
+        alert('没有此人');
+    }
+}
+function ajax(url,opt){
+    return new Promise(function(resolve,reject){
+        var myopt = opt||{}
+         let defaultObj = {
+             method:'get',
+             body:'',
+             headers:{},
+             dataType:'json',
+             timeout:10000,
+             ontimeout:function(){},
+             async:true
+         }
+         for(var attr in myopt){
+             defaultObj[attr] = myopt[attr];
+         }
+         myopt = defaultObj;
+         var len = arguments.length;
+         var xhr = new XMLHttpRequest;
+         if(myopt.async === true){
+             xhr.timeout = myopt.timeout;
+             xhr.ontimeout = myopt.ontimeout;
+         }
+        function ready(){
+            if(myopt.async === true){
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState === 4){
+                            succOrError();
+                        }
+                    }
+                }else{
+                    succOrError();
+                }
+            }
+            function succOrError(){
+                if(/(20[0-7])|(30[14])/.test(xhr.status)){
+                    if(myopt.dataType === 'json'){
+                        resolve(eval('('+xhr.responseText+')'));
+                    }else if(myopt.dataType === 'xml'){
+                        resolve(xhr.responseXML);
+                    }
+                }else{
+                    reject(xhr.status);
+                }
+            }
+
+            if(len === 1){ 
+                ready();
+                xhr.open('get',url,true);
+                xhr.send();
+            }else if(len === 2){ 
+                if(/^get$/i.test(myopt.method)){
+                    ready();
+                    url = myopt.body?url+'?'+myopt.body:(url.includes('?')?url:url+'?');
+                    xhr.open('get',url+'&myrandom='+Date.now(),myopt.async);
+                    xhr.send();
+                    
+                }else if(/^post$/i.test(myopt.method)){
+                    ready();
+                    xhr.open('post',url,myopt.async);
+
+                    for(var attr in myopt.headers){
+                        if(myopt.headers.hasOwnProperty(attr)){
+                            xhr.setRequestHeader(attr,myopt.headers[attr]);
+                        }
+                    }
+                    xhr.send(myopt.body);
+                }
+            } 
+        }   
+    )
+}
+</script>
+</body>
+</html>
