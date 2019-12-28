@@ -1,0 +1,19 @@
+{
+  "name": "day4",
+  "version": "1.0.0",
+  "main": "1.js",
+  "dependencies": {
+    "css-loader": "^3.4.0",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
