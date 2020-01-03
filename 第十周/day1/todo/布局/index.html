@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <section class="todoapp">
+        <div>
+            <header class="header" >
+                <h1>todos</h1>
+                <input 
+                    class="new-todo" 
+                    placeholder="请输入内容" 
+                    type="text"
+                    @keyup.13 ="add"
+                    v-model="val.txt"
+                >
+            </header>
+            <section class="main">
+                <input
+                 class="toggle-all" type="checkbox" >
+                <ul class="todo-list">
+                    <li class="active" v-for="(val,key) in ary">
+                        <!-- {{val}} -->
+                        <div class="view">
+                         <input
+                          class="toggle"
+                           type="checkbox"
+                           >
+                            <label>{{val.txt}}</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <input 
+                            class="edit" 
+                        />
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+	            <span class="todo-count">
+	            	<strong>{{ary.length}}</strong>
+	            	<span>条未选中</span>
+                </span>
+                <ul 
+                    class="filters"
+                >
+                    <li>
+                        <a 
+                            href="#/all" 
+                            class="selected"
+                            value="全选中"
+                        >全部</a>
+                    </li>
+                    <li>
+                        <a 
+                            href="#/unchecked" 
+                            
+                            class=""
+                            value="未选中"
+                        >未选中</a>
+                    </li>
+                    <li>
+                        <a 
+                            href="#/checked"
+                            class=""
+                            value="已选中"
+                        >已选中</a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </section>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'.todoapp',
+        data:{ 
+            // val2:'',
+            ary:[
+                {
+                    id:0,
+                    txt:'哈哈',
+                    checked:true,
+                    onoff:false
+                },
+                {
+                    id:1,
+                    txt:'哈哈ha',
+                    checked:true,
+                    onoff:false
+                } 
+            ],
+               val:{id:Date.now(),
+                    txt:'',
+                    checked:true,
+                    onoff: false},
+        },
+        methods:{
+           add(){
+               console.log(this.val)
+               console.log(this.ary)
+               console.log(this.ary[0].checked)
+               this.ary.push(this.val)
+               console.log(this.ary)
+               console.log(this)
+           }
+        },
+        
+        computed:{
+        
+        },
+       
+    })
+ 
+
+    //   var jsonVal = JSON.stringify(val);// 转成JSON格式
+    //  var val1 = $.parseJSON(jsonVal); 
+</script>
+</body>
+</html>
